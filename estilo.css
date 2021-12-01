@@ -1,6 +1,8 @@
 body{
     background-color: black;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'BLU Esoteric', sans-serif;
+    font-weight: bold;
+                                                
     
 }
 h1{
@@ -19,9 +21,12 @@ align-items: center;
 
 #boton{
     border-radius: 10px; height: 70px; width: 250px; background-color: darkolivegreen;
-    font-size: large;
-    
+    font-size:xx-large;
+    font-family: 'BLU Esoteric', sans-serif;
+    color: lightblue;
 }
+
+
 
 #imagenes{
     display: flex;
@@ -31,5 +36,5 @@ align-items: center;
 }
 
 #bruja{
-    border: 10px;
+    border-radius: 10px;
 }
