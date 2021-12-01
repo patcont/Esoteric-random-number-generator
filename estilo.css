@@ -1,0 +1,35 @@
+body{
+    background-color: darkblue;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+}
+h1{
+    color: lightblue;
+}
+
+h2{
+    color: lightblue;
+    font-size: 50px;
+}
+#todo{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+#boton{
+    border-radius: 10px; height: 70px; width: 250px; background-color: darkolivegreen;
+    font-size: large;
+    
+}
+
+#imagenes{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#bruja{
+    border: 10px;
+}
