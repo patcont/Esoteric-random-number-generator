@@ -1,9 +1,19 @@
-@import url('http://fonts.cdnfonts.com/css/blu-esoteric');
-
+@font-face {
+    font-family: 'BLU Esoteric';
+    src: url('BLUEsotericplain.eot');
+    src: url('BLUEsotericplain.eot?#iefix') format('embedded-opentype'),
+        url('BLUEsotericplain.woff2') format('woff2'),
+        url('BLUEsotericplain.woff') format('woff'),
+        url('BLUEsotericplain.ttf') format('truetype'),
+        url('BLUEsotericplain.svg#BLUEsotericplain') format('svg');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
 body{
     background-color: black;
-    font-family: 'BLU Esoteric', sans-serif;
-    font-weight: bold;
+    font-family: 'BLU Esoteric';
+ 
                                                 
     
 }
