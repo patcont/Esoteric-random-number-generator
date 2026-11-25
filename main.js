@@ -12,13 +12,12 @@ const OMENS = [
 ]
 
 const $ = (id) => document.getElementById(id)
-const ball = $('ball')
+const seer = $('seer')
 const number = $('number')
 const omen = $('omen')
 const ask = $('ask')
 
 const random = (max) => {
-  // crypto-quality randomness, because the gods deserve it
   const buf = new Uint32Array(1)
   crypto.getRandomValues(buf)
   return buf[0] % max
@@ -26,40 +25,32 @@ const random = (max) => {
 
 ask.addEventListener('click', () => {
   ask.disabled = true
-  ball.classList.remove('reveal')
-  ball.classList.add('thinking')
+  seer.classList.add('thinking')
+  number.classList.remove('reveal')
   omen.textContent = 'The mists are swirling…'
-
-  // Spin through numbers before the final answer
   const spin = setInterval(() => (number.textContent = random(100)), 70)
 
   setTimeout(() => {
     clearInterval(spin)
     number.textContent = random(100)
+    number.classList.add('reveal')
+    seer.classList.remove('thinking')
     omen.textContent = OMENS[random(OMENS.length)]
-    ball.classList.remove('thinking')
-    ball.classList.add('reveal')
     ask.disabled = false
-    ask.textContent = 'Ask again'
   }, 1800)
 })
 
-// Optional ambient sound, generated in the browser (no audio files)
+// Sound starts on the first click anywhere, like the 2022 version
 const ambience = createAmbience()
 const soundBtn = $('sound')
-soundBtn.addEventListener('click', () => {
-  const on = ambience.toggle()
+const showSound = (on) => {
   soundBtn.textContent = on ? '🔊' : '🔇'
   soundBtn.setAttribute('aria-pressed', String(on))
-})
-
-// Twinkling starfield
-const stars = document.querySelector('.stars')
-for (let i = 0; i < 120; i++) {
-  const s = document.createElement('i')
-  s.style.left = `${Math.random() * 100}%`
-  s.style.top = `${Math.random() * 100}%`
-  s.style.animationDelay = `${Math.random() * 4}s`
-  s.style.setProperty('--size', `${1 + Math.random() * 2}px`)
-  stars.append(s)
 }
+soundBtn.addEventListener('click', (e) => {
+  e.stopPropagation()
+  showSound(ambience.toggle())
+})
+document.addEventListener('click', () => {
+  if (!ambience.isOn()) showSound(ambience.toggle())
+}, { once: true })

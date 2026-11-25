@@ -1,104 +1,109 @@
+@font-face {
+  font-family: 'BLU Esoteric';
+  src: url('fonts/BLUEsotericplain.woff2') format('woff2'),
+       url('fonts/BLUEsotericplain.woff') format('woff'),
+       url('fonts/BLUEsotericplain.ttf') format('truetype');
+  font-display: swap;
+}
+
 :root {
-  --night: #0b0718;
-  --violet: #6d3fd6;
-  --glow: #b89cff;
-  --gold: #e8c46a;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  color: #e9e2ff;
-  background: radial-gradient(ellipse at top, #24104a, var(--night) 70%);
+  --blue: lightblue;
+  --olive: darkolivegreen;
+  font-family: 'BLU Esoteric', Georgia, serif;
+  color: var(--blue);
+  background: #000;
 }
 
 * { box-sizing: border-box; }
-body { margin: 0; min-height: 100dvh; display: grid; place-items: center; overflow: hidden; }
-
-.stars { position: fixed; inset: 0; pointer-events: none; }
-.stars i {
-  position: absolute;
-  width: var(--size);
-  height: var(--size);
-  border-radius: 50%;
-  background: white;
-  animation: twinkle 4s ease-in-out infinite;
-}
-@keyframes twinkle { 50% { opacity: 0.15; } }
-
-main { position: relative; display: grid; justify-items: center; gap: 1.5rem; padding: 2rem 1rem; text-align: center; }
+body { margin: 0; min-height: 100dvh; display: grid; place-items: center; overflow-x: hidden; }
+main { display: grid; justify-items: center; gap: 1.25rem; padding: 2rem 1rem; text-align: center; }
 
 h1 {
   margin: 0;
-  max-width: 14ch;
-  font-family: 'Cinzel Decorative', serif;
-  font-size: clamp(1.7rem, 6vw, 3rem);
-  line-height: 1.15;
-  color: var(--gold);
-  text-shadow: 0 0 20px rgb(232 196 106 / 0.4);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 18px rgb(173 216 230 / 0.45);
 }
 
-.ball-wrap { display: grid; justify-items: center; }
-.ball {
-  width: clamp(180px, 45vw, 240px);
+/* torch | fortune teller | torch */
+.scene { display: flex; align-items: center; justify-content: center; gap: clamp(0.5rem, 4vw, 3rem); }
+.torch {
+  width: clamp(44px, 9vw, 100px);
+  height: auto;
+  filter: drop-shadow(0 0 24px rgb(255 140 40 / 0.55));
+}
+
+.seer {
+  position: relative;
+  margin: 0;
+  width: clamp(200px, 48vw, 340px);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 0 0 2px rgb(173 216 230 / 0.15), 0 0 60px rgb(120 160 255 / 0.25);
+}
+.seer img { display: block; width: 100%; height: auto; }
+
+/* glow laid exactly over the crystal ball in the photo */
+.aura, .number {
+  position: absolute;
+  left: 49.5%;
+  top: 65%;
+  transform: translate(-50%, -50%);
+}
+.aura {
+  width: 46%;
   aspect-ratio: 1;
   border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background:
-    radial-gradient(circle at 35% 30%, rgb(255 255 255 / 0.55), transparent 22%),
-    radial-gradient(circle at 50% 60%, #8b5cf6, #3b1a7a 60%, #1a0b38);
-  box-shadow: 0 0 60px rgb(139 92 246 / 0.55), inset 0 -20px 40px rgb(0 0 0 / 0.45);
+  background: radial-gradient(circle, rgb(255 255 255 / 0.9), rgb(190 170 255 / 0.45) 55%, transparent 72%);
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 0.4s;
 }
-.ball.thinking { animation: swirl 0.6s linear infinite; }
-@keyframes swirl {
-  50% { box-shadow: 0 0 90px rgb(184 156 255 / 0.9), inset 0 -20px 40px rgb(0 0 0 / 0.45); filter: hue-rotate(40deg); }
-}
-.ball.reveal .number { animation: appear 0.6s ease-out; }
-@keyframes appear { from { opacity: 0; transform: scale(0.4); filter: blur(8px); } }
+.seer.thinking .aura { opacity: 1; animation: pulse 0.5s ease-in-out infinite alternate; }
+@keyframes pulse { to { transform: translate(-50%, -50%) scale(1.12); filter: hue-rotate(40deg); } }
 
 .number {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: clamp(3rem, 12vw, 4.5rem);
-  color: white;
-  text-shadow: 0 0 18px var(--glow);
+  font-size: clamp(2.6rem, 9vw, 4.5rem);
+  color: #3b2a6e;
+  text-shadow: 0 0 10px #fff, 0 0 22px #b9a2ff;
+  pointer-events: none;
 }
+.number.reveal { animation: appear 0.6s ease-out; }
+@keyframes appear { from { opacity: 0; transform: translate(-50%, -50%) scale(0.4); filter: blur(6px); } }
 
-.stand {
-  width: 60%;
-  height: 34px;
-  margin-top: -14px;
-  background: linear-gradient(#5a3b1c, #2c1a0a);
-  clip-path: polygon(12% 0, 88% 0, 100% 100%, 0 100%);
-  border-radius: 4px;
-}
-
-.omen { margin: 0; min-height: 1.6em; font-size: 1.35rem; font-style: italic; color: var(--glow); }
+.omen { margin: 0; min-height: 1.4em; font-size: clamp(1.1rem, 3vw, 1.5rem); opacity: 0.9; }
 
 .ask {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: 1.15rem;
-  padding: 0.9rem 1.8rem;
-  border: 1px solid var(--gold);
-  border-radius: 999px;
-  color: var(--gold);
-  background: rgb(232 196 106 / 0.08);
+  font: inherit;
+  font-size: clamp(1.2rem, 3.5vw, 1.9rem);
+  padding: 0.7rem 1.6rem;
+  border: 0;
+  border-radius: 10px;
+  color: var(--blue);
+  background: var(--olive);
   cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 6px 0 #2c3a18, 0 0 24px rgb(85 107 47 / 0.5);
+  transition: transform 0.1s, box-shadow 0.1s, filter 0.2s;
 }
-.ask:hover { background: rgb(232 196 106 / 0.18); box-shadow: 0 0 24px rgb(232 196 106 / 0.35); }
-.ask:disabled { opacity: 0.6; cursor: wait; }
+.ask:hover { filter: brightness(1.15); }
+.ask:active { transform: translateY(4px); box-shadow: 0 2px 0 #2c3a18; }
+.ask:disabled { filter: brightness(0.75); cursor: wait; }
 
 .sound {
   position: fixed;
   top: 1rem;
   right: 1rem;
-  font-size: 1.4rem;
-  background: rgb(255 255 255 / 0.08);
-  border: 1px solid rgb(255 255 255 / 0.2);
+  width: 46px;
+  height: 46px;
+  font-size: 1.3rem;
   border-radius: 50%;
-  width: 48px;
-  height: 48px;
+  border: 1px solid rgb(173 216 230 / 0.3);
+  background: rgb(255 255 255 / 0.06);
   cursor: pointer;
 }
-button:focus-visible { outline: 3px solid var(--glow); outline-offset: 3px; }
+button:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
 
 @media (prefers-reduced-motion: reduce) {
-  .stars i, .ball.thinking, .ball.reveal .number { animation: none; }
+  .seer.thinking .aura, .number.reveal { animation: none; }
 }

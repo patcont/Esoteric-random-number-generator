@@ -3,32 +3,32 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Ask the crystal ball for your lucky number of the day." />
+  <meta name="description" content="Ask the fortune teller for your lucky number of the day." />
   <title>What is your lucky number today?</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet" />
+  <link rel="preload" href="fonts/BLUEsotericplain.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="style.css" />
   <script src="main.js" type="module"></script>
 </head>
 <body>
-  <div class="stars" aria-hidden="true"></div>
-
-  <button id="sound" class="sound" aria-pressed="false" title="Ambient sound">🔇</button>
+  <button id="sound" class="sound" aria-pressed="false" title="Music and fire sounds">🔇</button>
 
   <main>
     <h1>What is your lucky number today?</h1>
 
-    <div class="ball-wrap">
-      <div class="ball" id="ball">
-        <span class="number" id="number" aria-live="polite">?</span>
-      </div>
-      <div class="stand" aria-hidden="true"></div>
+    <div class="scene">
+      <img class="torch" src="image/torch-left.gif" alt="" width="100" height="224" />
+      <figure class="seer" id="seer">
+        <img src="image/bruja.jpg" width="368" height="468"
+          alt="A fortune teller in a colorful headscarf staring over her glowing crystal ball" />
+        <div class="aura" aria-hidden="true"></div>
+        <span class="number" id="number" aria-live="polite"></span>
+      </figure>
+      <img class="torch" src="image/torch-right.gif" alt="" width="100" height="224" />
     </div>
 
     <p class="omen" id="omen">The spirits are waiting for your question…</p>
 
-    <button id="ask" class="ask">Let the gods decide</button>
+    <button id="ask" class="ask">LET THE GODS DECIDE!!!</button>
   </main>
 </body>
 </html>

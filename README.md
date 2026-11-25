@@ -1,7 +1,7 @@
 # 🔮 What is your lucky number today?
 
-A tiny esoteric random number generator: ask the crystal ball and the gods pick your lucky number (0–99)
-together with an omen. One of my first JavaScript projects (2022), re-imagined in 2026.
+A tiny esoteric random number generator: ask the fortune teller and the gods pick your lucky number (0–99)
+together with an omen. One of my first JavaScript projects (2022), refreshed in 2026 keeping its original look.
 
 ![Screenshot](docs/screenshot.png)
 
@@ -9,10 +9,11 @@ together with an omen. One of my first JavaScript projects (2022), re-imagined i
 
 ## Features
 
-- Crystal ball that "thinks" (spinning numbers + glow) before revealing the answer
+- The original fortune teller, torches and esoteric font from 2022
+- The number appears glowing **inside the crystal ball** of the photo, which pulses while the gods decide
 - Random omen with every number; uses `crypto.getRandomValues`
-- Optional ambient sound (mystic drone + fire crackles) **synthesized live with the Web Audio API** — no audio files
-- Twinkling starfield, responsive layout, *reduced-motion* friendly, keyboard accessible
+- Ritual music and crackling fire **synthesized live with the Web Audio API** (starts on the first click, mute button top-right)
+- Responsive layout, keyboard accessible, *reduced-motion* friendly
 
 ## Run it
 
@@ -21,6 +22,6 @@ No build step: open `index.html` or serve the folder (`npx serve .`).
 
 ## 2026 refresh
 
-The 2022 version used two MP3s ripped from YouTube, GIFs and a downloaded font of unknown license,
-and tried to autoplay audio (which modern browsers block). Everything is now drawn with CSS and generated
-with the Web Audio API, so the repo went from ~10 MB to a few KB. The original files are in the git history.
+Same look as the 2022 version, with modern code: the number now lives inside the crystal ball, the layout
+works on phones, the two YouTube-ripped MP3s were replaced by music generated in the browser, and the repo
+dropped unused files. The original code is in the git history.
