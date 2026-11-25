@@ -9,7 +9,7 @@
 }
 
 * { box-sizing: border-box; }
-body { margin: 0; min-height: 100dvh; display: grid; place-items: center; overflow: hidden; }
+body { margin: 0; min-height: 100dvh; display: grid; place-items: center; overflow-x: hidden; }
 
 .stars { position: fixed; inset: 0; pointer-events: none; }
 .stars i {
@@ -34,40 +34,97 @@ h1 {
   text-shadow: 0 0 20px rgb(232 196 106 / 0.4);
 }
 
-.ball-wrap { display: grid; justify-items: center; }
+/* --- Scene: torch | fortune teller | torch --- */
+.scene {
+  display: grid;
+  width: min(94vw, 640px);
+  grid-template-columns: 1fr 3.4fr 1fr;
+  align-items: center;
+  gap: clamp(0.25rem, 2vw, 1.5rem);
+}
+
+.stage { position: relative; container-type: inline-size; }
+.witch, .hands { display: block; width: 100%; height: auto; }
+.hands { position: absolute; inset: 0; pointer-events: none; }
+.witch {
+  /* fade the drawing's side and bottom edges into the night */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+
 .ball {
-  width: clamp(180px, 45vw, 240px);
+  position: absolute;
+  left: 26.4%;
+  top: 50.5%;
+  width: 47.2%;
   aspect-ratio: 1;
   border-radius: 50%;
   display: grid;
   place-items: center;
   background:
-    radial-gradient(circle at 35% 30%, rgb(255 255 255 / 0.55), transparent 22%),
-    radial-gradient(circle at 50% 60%, #8b5cf6, #3b1a7a 60%, #1a0b38);
-  box-shadow: 0 0 60px rgb(139 92 246 / 0.55), inset 0 -20px 40px rgb(0 0 0 / 0.45);
+    radial-gradient(circle at 35% 30%, rgb(255 255 255 / 0.7), transparent 22%),
+    radial-gradient(circle at 50% 60%, rgb(190 160 255 / 0.95), rgb(110 70 210 / 0.9) 55%, rgb(40 15 90 / 0.95));
+  box-shadow: 0 0 50px rgb(167 139 250 / 0.75), inset 0 -14px 30px rgb(0 0 0 / 0.35);
 }
 .ball.thinking { animation: swirl 0.6s linear infinite; }
 @keyframes swirl {
-  50% { box-shadow: 0 0 90px rgb(184 156 255 / 0.9), inset 0 -20px 40px rgb(0 0 0 / 0.45); filter: hue-rotate(40deg); }
+  50% { box-shadow: 0 0 90px rgb(200 180 255 / 1), inset 0 -14px 30px rgb(0 0 0 / 0.35); filter: hue-rotate(50deg) brightness(1.15); }
 }
 .ball.reveal .number { animation: appear 0.6s ease-out; }
 @keyframes appear { from { opacity: 0; transform: scale(0.4); filter: blur(8px); } }
 
 .number {
   font-family: 'Cinzel Decorative', serif;
-  font-size: clamp(3rem, 12vw, 4.5rem);
+  font-size: 14cqw;
   color: white;
-  text-shadow: 0 0 18px var(--glow);
+  text-shadow: 0 0 18px var(--glow), 0 0 4px #3b1a7a;
 }
 
-.stand {
-  width: 60%;
-  height: 34px;
-  margin-top: -14px;
-  background: linear-gradient(#5a3b1c, #2c1a0a);
-  clip-path: polygon(12% 0, 88% 0, 100% 100%, 0 100%);
-  border-radius: 4px;
+/* --- Torches --- */
+.torch { position: relative; margin-top: 10%; }
+.torch img { display: block; width: 100%; height: auto; }
+.flame {
+  position: absolute;
+  left: 50%;
+  bottom: 61.5%; /* sits on the cup (y = 99 of the 260-unit torch drawing) */
+  width: 46%;
+  aspect-ratio: 1 / 1.7;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 0 14px rgb(255 140 30 / 0.9));
 }
+.flame i {
+  position: absolute;
+  inset: 0;
+  border-radius: 50% 50% 45% 45% / 65% 65% 35% 35%;
+  transform-origin: 50% 100%;
+  animation: flicker 0.9s ease-in-out infinite alternate;
+}
+.flame i:nth-child(1) { background: radial-gradient(ellipse at 50% 85%, #ffb347, #ff5a00 55%, transparent 72%); }
+.flame i:nth-child(2) { inset: 22% 18% 0; background: radial-gradient(ellipse at 50% 85%, #fff3b0, #ffc93c 55%, transparent 75%); animation-duration: 0.6s; animation-delay: -0.3s; }
+.flame i:nth-child(3) { inset: 50% 32% 0; background: radial-gradient(ellipse at 50% 80%, #ffffff, #fff7d1 60%, transparent 80%); animation-duration: 0.45s; }
+.torch.right .flame i { animation-delay: -0.4s; }
+@keyframes flicker {
+  0%   { transform: scale(1, 1) skewX(0deg); }
+  25%  { transform: scale(0.94, 1.08) skewX(3deg); }
+  50%  { transform: scale(1.04, 0.95) skewX(-2deg); }
+  75%  { transform: scale(0.97, 1.1) skewX(2deg); }
+  100% { transform: scale(1.02, 0.98) skewX(-3deg); }
+}
+
+/* warm light cast by the torches */
+.glow {
+  position: fixed;
+  top: 10%;
+  width: 60vw;
+  height: 80vh;
+  pointer-events: none;
+  background: radial-gradient(closest-side, rgb(255 120 30 / 0.16), transparent);
+  animation: breathe 2.2s ease-in-out infinite alternate;
+}
+.glow.left { left: -18vw; }
+.glow.right { right: -18vw; animation-delay: -1.1s; }
+@keyframes breathe { to { opacity: 0.6; } }
+
 
 .omen { margin: 0; min-height: 1.6em; font-size: 1.35rem; font-style: italic; color: var(--glow); }
 
@@ -100,5 +157,5 @@ h1 {
 button:focus-visible { outline: 3px solid var(--glow); outline-offset: 3px; }
 
 @media (prefers-reduced-motion: reduce) {
-  .stars i, .ball.thinking, .ball.reveal .number { animation: none; }
+  .stars i, .ball.thinking, .ball.reveal .number, .flame i, .glow { animation: none; }
 }

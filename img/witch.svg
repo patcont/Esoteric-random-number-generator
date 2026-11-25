@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 420">
+  <defs>
+    <linearGradient id="robe" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a1d6e"/><stop offset="1" stop-color="#16092e"/>
+    </linearGradient>
+    <linearGradient id="scarf" x1="0" x2="1">
+      <stop offset="0" stop-color="#c2185b"/><stop offset=".2" stop-color="#f9a825"/>
+      <stop offset=".4" stop-color="#7b1fa2"/><stop offset=".6" stop-color="#00897b"/>
+      <stop offset=".8" stop-color="#e65100"/><stop offset="1" stop-color="#c2185b"/>
+    </linearGradient>
+    <radialGradient id="skin" cx=".45" cy=".4" r=".7">
+      <stop offset="0" stop-color="#f0c6a0"/><stop offset="1" stop-color="#c98f66"/>
+    </radialGradient>
+    <radialGradient id="iris" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#e9dcff"/><stop offset=".5" stop-color="#9b6bff"/><stop offset="1" stop-color="#3b1a7a"/>
+    </radialGradient>
+    <linearGradient id="velvet" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b3122a"/><stop offset="1" stop-color="#4a0510"/>
+    </linearGradient>
+  </defs>
+
+  <!-- hair falling behind -->
+  <path d="M112 150 C100 230 92 290 104 330 L256 330 C268 290 260 230 248 150 Z" fill="#1a0e14"/>
+
+  <!-- robe / shoulders -->
+  <path d="M40 420 C52 330 90 268 140 252 L220 252 C270 268 308 330 320 420 Z" fill="url(#robe)"/>
+  <path d="M140 252 L180 300 L220 252" stroke="#e8c46a" stroke-width="3" fill="none"/>
+  <!-- neck -->
+  <path d="M160 200 L200 200 L204 256 L156 256 Z" fill="#c98f66"/>
+  <!-- necklace -->
+  <path d="M150 252 Q180 280 210 252" stroke="#e8c46a" stroke-width="3" fill="none"/>
+  <circle cx="180" cy="270" r="6" fill="#9b6bff" stroke="#e8c46a" stroke-width="2"/>
+
+  <!-- face -->
+  <ellipse cx="180" cy="148" rx="50" ry="60" fill="url(#skin)"/>
+  <!-- earrings -->
+  <circle cx="128" cy="168" r="9" fill="none" stroke="#e8c46a" stroke-width="3"/>
+  <circle cx="232" cy="168" r="9" fill="none" stroke="#e8c46a" stroke-width="3"/>
+
+  <!-- eyebrows -->
+  <path d="M146 128 Q160 118 174 126" stroke="#1a0e14" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M186 126 Q200 118 214 128" stroke="#1a0e14" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- eyes -->
+  <g class="eyes">
+    <path d="M146 144 Q160 132 174 144 Q160 154 146 144 Z" fill="#fff"/>
+    <path d="M186 144 Q200 132 214 144 Q200 154 186 144 Z" fill="#fff"/>
+    <circle cx="160" cy="144" r="6" fill="url(#iris)"/>
+    <circle cx="200" cy="144" r="6" fill="url(#iris)"/>
+    <circle cx="160" cy="144" r="2.2" fill="#120822"/><circle cx="200" cy="144" r="2.2" fill="#120822"/>
+    <path d="M143 143 Q160 128 176 143" stroke="#120822" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M184 143 Q200 128 217 143" stroke="#120822" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+  <!-- bindi / jewel -->
+  <circle cx="180" cy="122" r="3.5" fill="#e8c46a"/>
+  <!-- nose + lips -->
+  <path d="M180 148 Q176 166 182 170" stroke="#a8714e" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M166 184 Q180 178 194 184 Q180 194 166 184 Z" fill="#a0182c"/>
+
+  <!-- headscarf -->
+  <path d="M124 128 C124 70 236 70 236 128 C226 112 204 102 180 102 C156 102 134 112 124 128 Z" fill="url(#scarf)"/>
+  <path d="M120 130 C112 90 150 64 180 64 C210 64 248 90 240 130 C246 104 220 84 180 84 C140 84 114 104 120 130 Z" fill="#7b1fa2" opacity=".55"/>
+  <path d="M232 104 C262 112 274 150 262 190 C256 160 246 132 232 120 Z" fill="url(#scarf)"/>
+  <!-- coin fringe -->
+  <g fill="#e8c46a" stroke="#a8812a" stroke-width="1">
+    <circle cx="132" cy="122" r="4"/><circle cx="143" cy="114" r="4"/><circle cx="155" cy="109" r="4"/>
+    <circle cx="167" cy="106" r="4"/><circle cx="180" cy="105" r="4"/><circle cx="193" cy="106" r="4"/>
+    <circle cx="205" cy="109" r="4"/><circle cx="217" cy="114" r="4"/><circle cx="228" cy="122" r="4"/>
+  </g>
+
+  <!-- velvet cloth on the table -->
+  <path d="M0 360 C40 336 90 350 130 340 C170 330 200 346 240 338 C290 328 330 344 360 334 L360 420 L0 420 Z" fill="url(#velvet)"/>
+  <path d="M30 420 C50 392 70 372 96 360 M150 420 C160 392 170 372 186 352 M280 420 C268 392 262 370 250 352" stroke="#ff4d6a" stroke-opacity=".25" stroke-width="6" fill="none"/>
+</svg>

@@ -13,17 +13,32 @@
 </head>
 <body>
   <div class="stars" aria-hidden="true"></div>
+  <div class="glow left" aria-hidden="true"></div>
+  <div class="glow right" aria-hidden="true"></div>
 
   <button id="sound" class="sound" aria-pressed="false" title="Ambient sound">🔇</button>
 
   <main>
     <h1>What is your lucky number today?</h1>
 
-    <div class="ball-wrap">
-      <div class="ball" id="ball">
-        <span class="number" id="number" aria-live="polite">?</span>
+    <div class="scene">
+      <div class="torch left" aria-hidden="true">
+        <div class="flame"><i></i><i></i><i></i></div>
+        <img src="img/torch.svg" alt="" />
       </div>
-      <div class="stand" aria-hidden="true"></div>
+
+      <div class="stage">
+        <img class="witch" src="img/witch.svg" alt="A fortune teller with a colorful headscarf gazing into her crystal ball" />
+        <div class="ball" id="ball">
+          <span class="number" id="number" aria-live="polite">?</span>
+        </div>
+        <img class="hands" src="img/hands.svg" alt="" aria-hidden="true" />
+      </div>
+
+      <div class="torch right" aria-hidden="true">
+        <div class="flame"><i></i><i></i><i></i></div>
+        <img src="img/torch.svg" alt="" />
+      </div>
     </div>
 
     <p class="omen" id="omen">The spirits are waiting for your question…</p>

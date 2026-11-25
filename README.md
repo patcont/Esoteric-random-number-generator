@@ -9,6 +9,7 @@ together with an omen. One of my first JavaScript projects (2022), re-imagined i
 
 ## Features
 
+- A fortune teller with a colorful headscarf and two flickering torches, all original SVG/CSS artwork
 - Crystal ball that "thinks" (spinning numbers + glow) before revealing the answer
 - Random omen with every number; uses `crypto.getRandomValues`
 - Optional ambient sound (mystic drone + fire crackles) **synthesized live with the Web Audio API** — no audio files
@@ -22,5 +23,6 @@ No build step: open `index.html` or serve the folder (`npx serve .`).
 ## 2026 refresh
 
 The 2022 version used two MP3s ripped from YouTube, GIFs and a downloaded font of unknown license,
-and tried to autoplay audio (which modern browsers block). Everything is now drawn with CSS and generated
+and tried to autoplay audio (which modern browsers block). The fortune teller and torches of the original
+(a stock photo and GIFs) were redrawn as original SVG illustrations with CSS-animated flames, and the sound is generated
 with the Web Audio API, so the repo went from ~10 MB to a few KB. The original files are in the git history.
