@@ -1,15 +1,26 @@
+# 🔮 What is your lucky number today?
 
-# Esoteric Random Number Generator
+A tiny esoteric random number generator: ask the crystal ball and the gods pick your lucky number (0–99)
+together with an omen. One of my first JavaScript projects (2022), re-imagined in 2026.
 
-This website just use a simple js logic for generate a random number with is styled in an esoteric style to make it more fun.
+![Screenshot](docs/screenshot.png)
 
+**Live demo:** https://patcont.github.io/Esoteric-random-number-generator
 
-## 🔗 Links
-https://patcont.github.io/Portfolio-webpage/portfolio-details%20copy.html#
+## Features
 
+- Crystal ball that "thinks" (spinning numbers + glow) before revealing the answer
+- Random omen with every number; uses `crypto.getRandomValues`
+- Optional ambient sound (mystic drone + fire crackles) **synthesized live with the Web Audio API** — no audio files
+- Twinkling starfield, responsive layout, *reduced-motion* friendly, keyboard accessible
 
+## Run it
 
-## Screenshots
+No build step: open `index.html` or serve the folder (`npx serve .`).
+(The page uses ES modules, so some browsers need it served over `http://` instead of `file://`.)
 
-![App Screenshot](https://patcont.github.io/Portfolio-webpage/assets/img/portfolio/pagina%20bruja4.png)
+## 2026 refresh
 
+The 2022 version used two MP3s ripped from YouTube, GIFs and a downloaded font of unknown license,
+and tried to autoplay audio (which modern browsers block). Everything is now drawn with CSS and generated
+with the Web Audio API, so the repo went from ~10 MB to a few KB. The original files are in the git history.
